@@ -72,3 +72,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+
+#costum Added
+gem "devise"
