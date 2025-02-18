@@ -14,7 +14,7 @@ Booking.destroy_all
 Clothing.destroy_all
 User.destroy_all
 
-puts "Creating 15 users..."
+puts "Creating 30 users..."
 30.times do
   new_user = User.new(email: Faker::Internet.email, password: "123123")
   new_user.save!
