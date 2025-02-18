@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :clothings, only: [:index, :show] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:index, :new, :create]
   end
 
   namespace :owner do
