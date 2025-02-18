@@ -1,1 +1,13 @@
-<h1>All bookings</h1>
+<div class="container">
+  <h1>All bookings for <%= @clothing.name %></h1>
+  <% @bookings.each do |booking| %>
+    <div class="mt-4 card-product">
+      <%= cl_image_tag @clothing.photo.key, alt: "" %>
+      <div class="card-product-infos">
+        <h2><%= @clothing.name %></h2>
+        <div><%= booking.status %></div>
+        <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
