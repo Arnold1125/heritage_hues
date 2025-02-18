@@ -10,4 +10,23 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/clothing"
+
+
+.clothing-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.clothing-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.clothing-item img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+

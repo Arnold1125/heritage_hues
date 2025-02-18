@@ -4,4 +4,8 @@ class ClothingsController < ApplicationController
     @booking = Booking.new
     @clothing = Clothing.find(params[:id])
   end 
+
+  def index
+    @clothings = Clothing.all
+  end
 end
