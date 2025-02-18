@@ -1,0 +1,15 @@
+<div class="container">
+
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(  <%= cl_image_path(@clothing.photo.key) %>);"></div>
+  <h2 class="fw-bold pt-4 mb-4"><%= @clothing.name %></h2>
+  <div class="mt-4">
+      <p ><strong>Size:</strong> <%= @clothing.size %></p>
+      <p ><strong>Color:</strong> <%= @clothing.color %></p>
+      <p ><%= @clothing.description %></p>
+  </div>
+
+  <div >
+    <p><%= @clothing.price %>$</p>
+  </div>
+
+</div>
