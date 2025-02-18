@@ -14,8 +14,8 @@ Booking.destroy_all
 Clothing.destroy_all
 User.destroy_all
 
-puts "Creating 15 users..."
-15.times do
+puts "Creating 30 users..."
+30.times do
   new_user = User.new(email: Faker::Internet.email, password: "123123")
   new_user.save!
 end
@@ -31,7 +31,6 @@ clothing_items.each do |item|
   clothing = Clothing.new(name: item, price: rand(1000..10000), size: ["S", "M", "L"].sample)
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
-  puts "Looking for image: #{image_path}"
   if File.exist?(image_path)
     file = File.open(image_path)
     clothing.photo.attach(io: file, filename: "#{item.parameterize}.jpg", content_type: "image/jpeg")
@@ -43,8 +42,11 @@ end
 
 puts "#{Clothing.all.count} clothes created"
 
-puts "Creating 10 bookings..."
-10.times do
-  booking = Booking.create!(user: User.all.sample, clothing: Clothing.all.sample)
+puts "Creating 100 bookings..."
+100.times do
+  booking = Booking.new(user: User.all.sample, clothing: Clothing.all.sample)
+  booking.start_date = Date.today + rand(1..30)
+  booking.end_date = booking.start_date + rand(1..10)
+  booking.save!
 end
 puts "#{Booking.all.count} bookings created"
