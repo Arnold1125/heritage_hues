@@ -50,6 +50,3 @@ puts "Creating 100 bookings..."
   booking.save!
 end
 puts "#{Booking.all.count} bookings created"
-
-## Make some users also "stores"
-## But some users are already stores if they have clothing...
