@@ -34,9 +34,9 @@ clothing_items.each do |item|
   puts "Looking for image: #{image_path}"
   if File.exist?(image_path)
     file = File.open(image_path)
-  clothing.photo.attach(io: file, filename: "#{item.parameterize}.jpg", content_type: "image/jpeg")
+    clothing.photo.attach(io: file, filename: "#{item.parameterize}.jpg", content_type: "image/jpeg")
   else
-  puts "⚠️ Image not found for #{item}, skipping attachment."
+    puts "⚠️ Image not found for #{item}, skipping attachment."
   end
   clothing.save!
 end
