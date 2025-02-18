@@ -1,0 +1,19 @@
+<h1>Traditional Clothes for Rent</h1>
+
+<div class="clothing-list">
+  <% @clothings.each do |clothing| %>
+    <div class="clothing-item">
+      <% if clothing.photo.attached? %>
+        <%= image_tag clothing.photo.variant(resize_to_limit: [300, 300]), alt: clothing.name %>
+      <% else %>
+        <%= image_tag "placeholder.jpg", alt: "No Image Available", size: "300x300" %>
+      <% end %>
+
+      <h2><%= clothing.name %></h2>
+      <p>Size: <%= clothing.size %></p>
+      <p>Price: <%= number_to_currency(clothing.price) %> per day</p>
+
+      <%= link_to "View Details", clothing_path(clothing), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
