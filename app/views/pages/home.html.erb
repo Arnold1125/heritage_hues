@@ -1,4 +1,3 @@
-<h1>Homepage</h1>
 <div class="container">
   <div class="cards">
     <% @clothing.each do |clothing| %>
@@ -9,11 +8,10 @@
           <h2><%= clothing.name %></h2>
           <p>Short description here!</p>
         </div>
-        <h2 class="card-trip-pricing"><%= clothing.price %></h2>
+        <h2 class="card-trip-pricing">¥ <%= clothing.price %></h2>
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       </div>
     </div>
     <% end %>
   </div>
 </div>
-<p>Find me in app/views/pages/home.html.erb</p>
