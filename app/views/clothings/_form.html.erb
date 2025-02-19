@@ -1,15 +1,18 @@
-<div class="container">
-  <%= simple_form_for [@clothing, @booking] do |f| %>
-    <div class="form-group">
-      <%= f.input :start_date, as: :date, html5: true, label: 'Start Date', input_html: { class: 'datepicker' } %>
-    </div>
+<div class="booking-card-container shadow-lg border rounded p-4">
+    <h3 class="fw-bold text-primary mb-3">
+      ¥<%= number_to_currency(@clothing.price, unit: "", delimiter: ",") %>
+    </h3>
+    <%= simple_form_for [@clothing, @booking] do |f| %>
+      <div class="form-group">
+        <%= f.input :start_date, as: :date, html5: true, label: 'Start Date', input_html: { class: 'datepicker' } %>
+      </div>
 
-    <div class="form-group">
-      <%= f.input :end_date, as: :date, html5: true, label: 'End Date', input_html: { class: 'datepicker' } %>
-    </div>
+      <div class="form-group">
+        <%= f.input :end_date, as: :date, html5: true, label: 'End Date', input_html: { class: 'datepicker' } %>
+      </div>
 
-    <div class="form-group">
-      <%= f.submit 'Make booking', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= f.submit 'Make booking', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
 </div>
