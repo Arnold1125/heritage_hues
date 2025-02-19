@@ -100,3 +100,8 @@ h1 {
 .card-trip-pricing:hover {
   text-decoration: none !important;
 }
+
+.card-trip img {
+  object-fit: cover;
+  object-position: center;
+}
