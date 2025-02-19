@@ -15,7 +15,16 @@ Clothing.destroy_all
 User.destroy_all
 
 puts "Creating 30 users..."
-30.times do
+new_user = User.new(email: "arnold@heritage.com", password: "123123")
+new_user.save!
+new_user = User.new(email: "aliya@heritage.com", password: "123123")
+new_user.save!
+new_user = User.new(email: "prachi@heritage.com", password: "123123")
+new_user.save!
+new_user = User.new(email: "remy@heritage.com", password: "123123")
+new_user.save!
+
+26.times do
   new_user = User.new(email: Faker::Internet.email, password: "123123")
   new_user.save!
 end
@@ -28,7 +37,7 @@ clothing_items = [
 ]
 
 clothing_items.each do |item|
-  clothing = Clothing.new(name: item, price: "¥#{rand(1000...10000)}", size: ["S", "M", "L"].sample)
+  clothing = Clothing.new(name: item, price: rand(1000...10_000).round(-1), size: ["S", "M", "L"].sample)
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
   if File.exist?(image_path)
@@ -42,10 +51,10 @@ end
 
 puts "#{Clothing.all.count} clothes created"
 
-puts "Creating 100 bookings..."
-5.times do
-  booking = Booking.new(user: User.last, clothing: Clothing.all.sample)
-  booking.status = ["pending", "success"].sample
+puts "Creating 5 bookings..."
+15.times do
+  booking = Booking.new(user: User.first(4).sample, clothing: Clothing.all.sample)
+  booking.status = ["pending", "accepted"].sample
   booking.start_date = Date.today + rand(1..30)
   booking.end_date = booking.start_date + rand(1..10)
   booking.save!

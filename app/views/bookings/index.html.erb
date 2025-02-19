@@ -2,16 +2,29 @@
   <%= link_to root_path do %>
     <i class="mt-4 fa-solid fa-chevron-left text-black"></i>
   <% end %>
-  <ul class="nav nav-pills nav-fill">
+  <ul class="mt-4 nav nav-pills nav-fill">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
+      <form action="">
+        <input type="hidden" name="status" value="">
+        <input class="btn btn-outline btn-sm rounded-pill" type="submit" value="Clear">
+      </form>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Longer nav link</a>
+      <form action="">
+        <input type="hidden" name="status" value="accepted">
+        <input class="btn btn-success btn-sm rounded-pill" type="submit" value="Accepted">
+      </form>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
+      <form action="">
+        <input type="hidden" name="status" value="pending">
+        <input class="btn btn-warning btn-sm rounded-pill" type="submit" value="Pending">
+      </form>    </li>
+    <li class="nav-item">
+      <form action="">
+        <input type="hidden" name="status" value="rejected">
+        <input class="btn btn-outline-danger btn-sm rounded-pill" type="submit" value="Rejected">
+      </form>    </li>
   </ul>
   <h1 class="mt-4">All bookings for <%= current_user.email %></h1>
   <% @bookings.each do |booking| %>
@@ -20,7 +33,7 @@
       <div class="card-product-infos">
         <h2><%= booking.clothing.name %></h2>
 
-        <% if booking.status == "success" %>
+        <% if booking.status == "accepted" %>
           <div class="badge rounded-pill bg-success"><%= booking.status %></div>
         <% elsif booking.status == "pending" %>
           <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
