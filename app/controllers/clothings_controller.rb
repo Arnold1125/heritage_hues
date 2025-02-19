@@ -14,6 +14,19 @@ class ClothingsController < ApplicationController
   end
 
   def create
+    @clothing = Clothing.new(clothing_params)
+    if @clothing.save
+      redirect_to clothing_path(@clothing)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
+
+  private
+
+  def clothing_params
+    params.require(:clothing).permit(:name, :price, :color, :size, :description)
+  end
+
 
 end
