@@ -7,6 +7,9 @@ h1 {
   color: #333;
 }
 
+.a {
+  text-decoration: none !important;
+}
 
 .clothing-list, .cards {
   display: grid;
@@ -23,6 +26,7 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
+  position: relative;
 }
 
 .clothing-item:hover, .card-trip:hover {
@@ -38,7 +42,7 @@ h1 {
   border-top-right-radius: 10px;
 }
 
-/* Text Content Styling */
+
 .clothing-item h2, .card-trip h2 {
   font-size: 20px;
   font-weight: bold;
@@ -56,7 +60,7 @@ h1 {
 .card-trip-pricing {
   font-size: 18px;
   font-weight: bold;
-  color: #ff385c;
+  color: #592ed1;
   text-align: right;
   padding: 10px;
 }
@@ -77,4 +81,22 @@ h1 {
 
 .btn-primary:hover {
   background-color: #5149b9;
+}
+
+
+
+.card-trip a,
+.card-trip-link,
+.card-trip-link h2,
+.card-trip-pricing {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+
+.card-trip a:hover,
+.card-trip-link:hover,
+.card-trip h2:hover,
+.card-trip-pricing:hover {
+  text-decoration: none !important;
 }
