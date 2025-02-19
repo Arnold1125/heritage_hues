@@ -1,19 +1,31 @@
 <h1>Traditional Clothes for Rent</h1>
 
-<div class="clothing-list">
-  <% @clothings.each do |clothing| %>
-    <div class="clothing-item">
-      <% if clothing.photo.attached? %>
-        <%= cl_image_tag clothing.photo.key, alt: "" %>
-      <% else %>
-        <%= cl_image_tag clothing.photo.key, alt: "", size: "300x300" %>
-      <% end %>
+<div class="page-container">
+  <!-- Left Side: Clothing List (2/3 of the page) -->
+  <div class="clothing-list">
+    <% @clothings.each do |clothing| %>
+      <div class="clothing-item">
+        <% if clothing.photo.attached? %>
+          <%= cl_image_tag clothing.photo.key, alt: "" %>
+        <% else %>
+          <%= cl_image_tag clothing.photo.key, alt: "", size: "300x300" %>
+        <% end %>
 
-      <h2><%= clothing.name %></h2>
-      <p>Size: <%= clothing.size %></p>
-      <p>Price: <%= number_to_currency(clothing.price, unit: "¥", delimiter: ",") %> per day</p>
+        <h2><%= clothing.name %></h2>
+        <p>Size: <%= clothing.size %></p>
+        <p>Price: <%= number_to_currency(clothing.price, unit: "¥", delimiter: ",") %> per day</p>
 
-      <%= link_to "View Details", clothing_path(clothing), class: "btn btn-primary" %>
+        <%= link_to "View Details", clothing_path(clothing), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Right Side: Map (1/3 of the page) -->
+  <div id="map-container">
+    <div id="map"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  <% end %>
+  </div>
 </div>
