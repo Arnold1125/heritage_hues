@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>All bookings for <%= current_user.email %></h1>
+  <%= link_to root_path do %>
+    <i class="mt-4 fa-solid fa-chevron-left text-black"></i>
+  <% end %>
+  <h1 class="mt-4">All bookings for <%= current_user.email %></h1>
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product">
       <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
