@@ -1,11 +1,46 @@
 <div class="container">
-  <h1>All bookings for <%= @clothing.name %></h1>
+  <%= link_to root_path do %>
+    <i class="mt-4 fa-solid fa-chevron-left text-black"></i>
+  <% end %>
+  <ul class="mt-4 nav nav-pills nav-fill">
+    <li class="nav-item">
+      <form action="">
+        <input type="hidden" name="status" value="">
+        <input class="btn btn-outline btn-sm rounded-pill" type="submit" value="Clear">
+      </form>
+    </li>
+    <li class="nav-item">
+      <form action="">
+        <input type="hidden" name="status" value="accepted">
+        <input class="btn btn-success btn-sm rounded-pill" type="submit" value="Accepted">
+      </form>
+    </li>
+    <li class="nav-item">
+      <form action="">
+        <input type="hidden" name="status" value="pending">
+        <input class="btn btn-warning btn-sm rounded-pill" type="submit" value="Pending">
+      </form>    </li>
+    <li class="nav-item">
+      <form action="">
+        <input type="hidden" name="status" value="rejected">
+        <input class="btn btn-outline-danger btn-sm rounded-pill" type="submit" value="Rejected">
+      </form>    </li>
+  </ul>
+  <h1 class="mt-4">All bookings for <%= current_user.email %></h1>
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product">
-      <%= cl_image_tag @clothing.photo.key, alt: "" %>
+      <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
       <div class="card-product-infos">
-        <h2><%= @clothing.name %></h2>
-        <div><%= booking.status %></div>
+        <h2><%= booking.clothing.name %></h2>
+
+        <% if booking.status == "accepted" %>
+          <div class="badge rounded-pill bg-success"><%= booking.status %></div>
+        <% elsif booking.status == "pending" %>
+          <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
+        <% else %>
+          <div class="badge rounded-pill bg-danger"><%= booking.status %></div>
+        <% end %>
+
         <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
       </div>
     </div>
