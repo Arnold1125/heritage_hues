@@ -28,15 +28,15 @@ clothing_items = [
 ]
 
 clothing_items.each do |item|
-  clothing = Clothing.new(name: item, price: rand(1000..10000), size: ["S", "M", "L"].sample)
+  clothing = Clothing.new(name: item, price: "¥#{rand(1000...10000)}", size: ["S", "M", "L"].sample)
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
   puts "Looking for image: #{image_path}"
   if File.exist?(image_path)
     file = File.open(image_path)
-  clothing.photo.attach(io: file, filename: "#{item.parameterize}.jpg", content_type: "image/jpeg")
+    clothing.photo.attach(io: file, filename: "#{item.parameterize}.jpg", content_type: "image/jpeg")
   else
-  puts "⚠️ Image not found for #{item}, skipping attachment."
+    puts "⚠️ Image not found for #{item}, skipping attachment."
   end
   clothing.save!
 end
