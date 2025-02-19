@@ -5,19 +5,15 @@ h1 {
   margin-bottom: 30px;
   color: #333;
 }
-
 .a {
   text-decoration: none !important;
 }
-
-
 .clothing-list, .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   justify-content: center;
   padding: 20px;
-
 }
 .clothing-item, .card-trip {
   background: white;
@@ -59,8 +55,6 @@ h1 {
   display: block;
   text-align: center;
   background-color: #6422F3;
-}
-.clothing-item, .card-trip {
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -69,8 +63,6 @@ h1 {
   border-radius: 8px;
   margin: 10px;
 }
-
-
 .btn-primary:hover {
   background-color: #5149B9;
 }
@@ -86,9 +78,4 @@ h1 {
 .card-trip h2:hover,
 .card-trip-pricing:hover {
   text-decoration: none !important;
-}
-
-.card-trip img {
-  object-fit: cover;
-  object-position: center;
 }
