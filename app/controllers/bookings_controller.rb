@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @clothing = Clothing.find(params[:clothing_id])
-    @bookings = Booking.where(clothing: @clothing)
+    @bookings = Booking.where(user: current_user)
   end
 
   def new
@@ -13,9 +12,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @clothing = Clothing.find(params[:clothing_id])
     @booking.clothing = @clothing
-    @booking.user = @clothing.user
+    @booking.user = current_user
     if @booking.save
-      redirect_to clothing_bookings_path(@clothing)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end

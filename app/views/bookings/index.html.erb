@@ -1,11 +1,33 @@
 <div class="container">
-  <h1>All bookings for <%= @clothing.name %></h1>
+  <%= link_to root_path do %>
+    <i class="mt-4 fa-solid fa-chevron-left text-black"></i>
+  <% end %>
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Longer nav link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+  </ul>
+  <h1 class="mt-4">All bookings for <%= current_user.email %></h1>
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product">
-      <%= cl_image_tag @clothing.photo.key, alt: "" %>
+      <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
       <div class="card-product-infos">
-        <h2><%= @clothing.name %></h2>
-        <div><%= booking.status %></div>
+        <h2><%= booking.clothing.name %></h2>
+
+        <% if booking.status == "success" %>
+          <div class="badge rounded-pill bg-success"><%= booking.status %></div>
+        <% elsif booking.status == "pending" %>
+          <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
+        <% else %>
+          <div class="badge rounded-pill bg-danger"><%= booking.status %></div>
+        <% end %>
+
         <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
       </div>
     </div>
