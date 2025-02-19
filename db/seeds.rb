@@ -36,6 +36,29 @@ clothing_items = [
   "Baju Melayu", "Ao Dai", "Dashiki", "Sarong", "Lehenga", "Gho", "Chapan", "Huipil", "Sombrero Vueltiao", "Shuka"
 ]
 
+clothing_descriptions = [
+  "A traditional Japanese garment known for its elegant flowing silhouette and intricate patterns.",
+  "A beautiful Korean attire characterized by vibrant colors and graceful lines, worn on special occasions.",
+  "A stunning South Asian drape that exudes elegance and comes in countless fabrics and designs.",
+  "A form-fitting Chinese dress with a high collar and side slits, symbolizing sophistication and tradition.",
+  "A charming Bavarian dress with a fitted bodice and full skirt, often worn at Oktoberfest celebrations.",
+  "A traditional Scottish garment made of tartan fabric, representing clan heritage and worn with pride.",
+  "A long, flowing robe worn by men in the Arabian Peninsula, known for its simplicity and cultural significance.",
+  "A versatile Andean outer garment, woven from wool or alpaca, offering warmth and style.",
+  "A formal embroidered shirt from the Philippines, made of delicate fabric and worn for special events.",
+  "A loose-fitting Moroccan robe with a pointed hood, perfect for both casual wear and special occasions.",
+  "A classic Malay outfit featuring a tunic and trousers, often worn with a sampin for a polished look.",
+  "A Vietnamese long tunic with slits on both sides, paired with pants for an elegant and graceful appearance.",
+  "A brightly colored West African shirt with bold patterns, symbolizing cultural pride and heritage.",
+  "A lightweight wrap-around skirt worn in tropical regions, perfect for comfort and casual elegance.",
+  "A heavily embroidered skirt and blouse set worn in India, often adorned with intricate beadwork and sequins.",
+  "A knee-length robe worn by Bhutanese men, secured with a traditional woven belt called a kera.",
+  "A richly decorated Central Asian coat, made from luxurious fabrics and often worn as a sign of status.",
+  "A traditional handwoven blouse from Central America, showcasing colorful designs unique to each region.",
+  "A distinctive handwoven hat from Colombia, made from cane fiber and featuring intricate patterns.",
+  "A brightly colored Maasai garment, often wrapped around the body and worn with beaded accessories."
+]
+
 clothing_items.each do |item|
   clothing = Clothing.new(name: item, price: rand(1000...10_000).round(-1), size: ["S", "M", "L"].sample)
   clothing.user = User.all.sample
@@ -61,3 +84,8 @@ puts "Creating 5 bookings..."
 end
 
 puts "#{Booking.all.count} bookings created"
+
+Clothing.all.each_with_index do |clothing, index|
+  clothing.description = clothing_descriptions[index]
+  clothing.save!
+end
