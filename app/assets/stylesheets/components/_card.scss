@@ -60,7 +60,7 @@ h1 {
   text-align: center;
   background-color: #6422F3;
 }
-
+.clothing-item, .card-trip {
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -68,8 +68,9 @@ h1 {
   text-decoration: none;
   border-radius: 8px;
   margin: 10px;
-
 }
+
+
 .btn-primary:hover {
   background-color: #5149B9;
 }
@@ -91,4 +92,3 @@ h1 {
   object-fit: cover;
   object-position: center;
 }
-
