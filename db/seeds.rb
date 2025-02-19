@@ -28,7 +28,7 @@ clothing_items = [
 ]
 
 clothing_items.each do |item|
-  clothing = Clothing.new(name: item, price: "¥#{rand(1000...10000)}", size: ["S", "M", "L"].sample)
+  clothing = Clothing.new(name: item, price: "¥#{rand(1000...10000)}", size: ["S", "M", "L"].sample, description: Faker::ChuckNorris.fact)
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
   if File.exist?(image_path)
