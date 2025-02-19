@@ -7,6 +7,9 @@ class ClothingsController < ApplicationController
 
   def index
     @clothings = Clothing.all
+    if params[:q]
+      @clothings = @clothings.select {|clothing| clothing.name.include?(params[:q])}
+    end
   end
 
   def new
