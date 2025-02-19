@@ -43,10 +43,12 @@ end
 puts "#{Clothing.all.count} clothes created"
 
 puts "Creating 100 bookings..."
-100.times do
-  booking = Booking.new(user: User.all.sample, clothing: Clothing.all.sample)
+5.times do
+  booking = Booking.new(user: User.last, clothing: Clothing.all.sample)
+  booking.status = ["pending", "success"].sample
   booking.start_date = Date.today + rand(1..30)
   booking.end_date = booking.start_date + rand(1..10)
   booking.save!
 end
+
 puts "#{Booking.all.count} bookings created"
