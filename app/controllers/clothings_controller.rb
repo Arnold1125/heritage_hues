@@ -5,6 +5,7 @@ class ClothingsController < ApplicationController
   end
 
   def index
+
     @clothings = Clothing.all
 
     @markers = @clothings.geocoded.map do |clothing|
@@ -14,6 +15,12 @@ class ClothingsController < ApplicationController
         name: clothing.name,
         address: clothing.address
       }
+
+    if params[:q].present?
+      @clothings = Clothing.search_by_name_and_description_and_country(params[:q])
+    else
+      @clothings = Clothing.all
+
     end
   end
 
@@ -33,8 +40,6 @@ class ClothingsController < ApplicationController
   private
 
   def clothing_params
-    params.require(:clothing).permit(:name, :price, :color, :size, :description)
+    params.require(:clothing).permit(:name, :price, :color, :size, :description, :country)
   end
-
-
 end

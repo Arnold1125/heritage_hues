@@ -51,7 +51,6 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 
 group :development, :test do
-  gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
 end
@@ -82,3 +81,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
 gem "geocoder"
+gem "pg_search"

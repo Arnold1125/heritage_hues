@@ -53,6 +53,7 @@ clothing_descriptions = [
   "A distinctive handwoven hat from Colombia, made from cane fiber and featuring intricate patterns.",
   "A brightly colored Maasai garment, often wrapped around the body and worn with beaded accessories."
 ]
+
 clothing_address = [
   { lat: 35.6895, lng: 139.6917, name: "Kimono Store Tokyo", address: "1 Chome-2-3 Asakusa, Taito City, Tokyo, Japan" },
   { lat: 35.6618, lng: 139.7041, name: "Hanbok Rental Tokyo", address: "5 Chome-3-6 Shibuya, Tokyo, Japan" },
@@ -75,13 +76,17 @@ clothing_address = [
   { lat: 35.6568, lng: 139.6990, name: "Le Wagon Tokyo", address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063, Japan" },
   { lat: 35.6568, lng: 139.6990, name: "Le Wagon Tokyo", address: "2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063, Japan" }
 ]
+clothing_Countries = ["Japan", "South Korea", "India", "China", "Germany", "Scotland", "Middle East", "Latin America", "Philippines", "Morocco", "Malaysia", "Vietnam", "West Africa", "Southeast Asia", "India", "Bhutan", "Central Asia", "Mexico", "Colombia", "Kenya"];
+
 clothing_items.each_with_index do |item, index|
   clothing = Clothing.new(
     name: item,
     price: rand(1000...10_000).round(-1),
     size: ["S", "M", "L"].sample,
     description: clothing_descriptions[index],
-    address: clothing_address[index]
+    address: clothing_address[index],
+    country: clothing_Countries[index]
+
   )
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
@@ -103,4 +108,6 @@ puts "Creating 5 bookings..."
   booking.save!
 end
 puts "#{Booking.all.count} bookings created"
-render json: Clothing.items
+
+# render json: Clothing.items
+
