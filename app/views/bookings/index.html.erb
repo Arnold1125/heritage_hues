@@ -22,8 +22,6 @@
             <p class="fs-6 text-end">¥<%= booking.clothing.price.to_i %>/day</p>
           <h2 class="text-end fs-4">¥<%= (booking.clothing.price * (booking.end_date - booking.start_date)).to_i %></h2>
         <% end %>
-
-
       </div>
     </div>
   <% end %>
