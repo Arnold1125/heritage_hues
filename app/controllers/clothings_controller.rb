@@ -30,8 +30,17 @@ class ClothingsController < ApplicationController
 
   def create
     @clothing = Clothing.new(clothing_params)
+    @clothing.user = current_user
+
+    if params[:clothing][:photo].present?
+      puts "Photo uploaded: #{params[:clothing][:photo].original_filename}"
+    else
+      puts "No photo uploaded"
+    end
+
+
     if @clothing.save
-      redirect_to clothing_path(@clothing)
+      redirect_to owner_bookings_path(@clothing)
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,6 +49,6 @@ class ClothingsController < ApplicationController
   private
 
   def clothing_params
-    params.require(:clothing).permit(:name, :price, :color, :size, :description, :country)
+    params.require(:clothing).permit(:name, :price, :color, :size, :description, :country, :photo)
   end
 end
