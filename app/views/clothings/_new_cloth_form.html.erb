@@ -2,9 +2,9 @@
     <h3 class="fw-bold text-primary mb-3">
       Create a new listing
     </h3>
-    <%= simple_form_for @clothing do |f| %>
+    <%= simple_form_for @clothing, html: { multipart: true } do |f| %>
       <div class="form-group">
-        <%= f.input :name, label: 'Name', error: 'name is mandatory, please specify one' %>
+        <%= f.input :name, placeholder: 'Name' %>
       </div>
 
       <div class="form-group">
@@ -12,20 +12,29 @@
       </div>
 
       <div class="form-group">
-        <%= f.input :size %>
+        <%= f.input :size, as: :select, collection: ["XXS", "XS", "S", "M", "L", "XL", "XXL"], prompt: "Select a size" %>
       </div>
+
+      <div class="form-group">
+        <%= f.input :photo, as: :file, label: "Upload an Image" %>
+      </div>
+
+      <% if @clothing.persisted? && @clothing.photo.attached? %>
+        <div class="mt-3">
+          <h5>Preview:</h5>
+          <%= image_tag @clothing.photo, class: "img-thumbnail", width: 200 %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.input :color %>
+      </div>
+
 
       <div class="form-group">
         <%= f.input :description %>
       </div>
 
-      <div class="form-group">
-        <%= f.input :color %>
-      </div>
-
-      <div class="form-group">
-        <%= f.input :color %>
-      </div>
 
       <div class="form-group">
         <%= f.submit 'Make listing', class: 'btn btn-primary' %>
