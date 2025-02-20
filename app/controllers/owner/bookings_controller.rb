@@ -1,6 +1,7 @@
 class Owner::BookingsController < ApplicationController
   def index
     @bookings = current_user.owner_bookings.order(updated_at: :desc)
+    @clothings = current_user.clothings
     if params[:status].present?
       @bookings = @bookings.where(status: params[:status])
     end

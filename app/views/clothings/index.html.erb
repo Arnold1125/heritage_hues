@@ -14,7 +14,7 @@
         <h2><%= clothing.name %></h2>
         <h2><%= clothing.country %></h2>
         <p>Size: <%= clothing.size %></p>
-        <p>Price: <%= number_to_currency(clothing.price, unit: "¥", delimiter: ",") %> per day</p>
+        <p>Price: <%= number_to_currency(clothing.price, {unit: "¥", precision: 0}) %> per day</p>
 
         <%= link_to "View Details", clothing_path(clothing), class: "btn btn-primary" %>
       </div>

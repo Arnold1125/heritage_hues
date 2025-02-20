@@ -5,7 +5,7 @@
 
   <%= render "shared/bookings_filter", path: owner_bookings_path %>
 
-  <h1 class="mt-4">My clothes</h1>
+  <h1 class="mt-4">My requests</h1>
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product">
       <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
@@ -37,4 +37,16 @@
       </div>
     </div>
   <% end %>
+
+  <h1 class="mt-4">My clothings</h1>
+  <% @clothings.each do |clothing| %>
+    <div class="mt-4 card-product">
+      <%= cl_image_tag clothing.photo.key, alt: "" %>
+      <div class="card-product-infos">
+        <h2><%= clothing.name %></h2>
+
+      </div>
+    </div>
+  <% end %>
+
 </div>

@@ -1,6 +1,6 @@
 <div class="booking-card-container shadow-lg border rounded p-4">
     <h3 class="fw-bold text-primary mb-3">
-      ¥<%= number_to_currency(@clothing.price, unit: "", delimiter: ",") %>
+      <%= number_to_currency(@clothing.price, {unit: "¥", precision: 0}) %>
     </h3>
     <%= simple_form_for [@clothing, @booking] do |f| %>
       <div class="form-group">
