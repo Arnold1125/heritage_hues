@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = current_user.bookings
     if params[:status] == "accepted"
       @bookings = Booking.where(user: current_user, status: "accepted")
     elsif params[:status] == "pending"
@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
     elsif params[:status] == "rejected"
       @bookings = Booking.where(user: current_user, status: "rejected")
     end
-
   end
 
   def new
