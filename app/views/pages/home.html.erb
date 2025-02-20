@@ -13,16 +13,17 @@
   <div class="cards">
     <% @clothings.each do |clothing| %>
       <%= link_to clothing_path(clothing), class: "card-trip-link" do %>
-        <div class="card-trip">
-          <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= clothing.name %></h2>
-              <p><%= clothing.description %></p>
+        <% if clothing.photo.attached? %>
+          <div class="card-trip">
+              <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>          <div class="card-trip-infos">
+              <div>
+                <h2><%= clothing.name %></h2>
+                <p>Short description here!</p>
+              </div>
+              <h2 class="card-trip-pricing">¥<%= clothing.price %></h2>
             </div>
-            <h2 class="card-trip-pricing">¥<%= clothing.price %></h2>
           </div>
-        </div>
+        <% end %>
       <% end %>
       </%= link_to %>
     <% end %>
