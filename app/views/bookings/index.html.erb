@@ -12,15 +12,13 @@
       <div class="card-product-infos">
         <h2><%= booking.clothing.name %></h2>
 
-        <% if booking.status == "accepted" %>
-          <div class="badge rounded-pill bg-success"><%= booking.status %></div>
-        <% elsif booking.status == "pending" %>
-          <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
-        <% else %>
-          <div class="badge rounded-pill bg-danger"><%= booking.status %></div>
+        <%= render "bookings/status", status: booking.status %>
+
+        <% if booking.start_date && booking.end_date %>
+          <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
         <% end %>
 
-        <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
+
       </div>
     </div>
   <% end %>

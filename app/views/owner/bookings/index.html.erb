@@ -12,7 +12,7 @@
       <div class="card-product-infos">
         <h2><%= booking.clothing.name %></h2>
 
-        <%= render "status", status: booking.status %>
+        <%= render "bookings/status", status: booking.status %>
 
         <% if booking.start_date && booking.end_date %>
           <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
