@@ -6,7 +6,7 @@ class ClothingsController < ApplicationController
 
   def index
     if params[:q].present?
-      @clothings = Clothing.search_by_name(params[:q])
+      @clothings = Clothing.search_by_name_and_description_and_country(params[:q])
     else
       @clothings = Clothing.all
     end
@@ -28,7 +28,7 @@ class ClothingsController < ApplicationController
   private
 
   def clothing_params
-    params.require(:clothing).permit(:name, :price, :color, :size, :description)
+    params.require(:clothing).permit(:name, :price, :color, :size, :description, :country)
   end
 
 
