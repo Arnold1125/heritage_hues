@@ -12,6 +12,7 @@
         <% end %>
 
         <h2><%= clothing.name %></h2>
+        <h2><%= clothing.country %></h2>
         <p>Size: <%= clothing.size %></p>
         <p>Price: <%= number_to_currency(clothing.price, unit: "¥", delimiter: ",") %> per day</p>
 

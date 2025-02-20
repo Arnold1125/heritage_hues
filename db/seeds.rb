@@ -35,7 +35,6 @@ clothing_items = [
   "Kimono", "Hanbok", "Sari", "Qipao", "Dirndl", "Kilt", "Thobe", "Poncho", "Barong Tagalog", "Djellaba",
   "Baju Melayu", "Ao Dai", "Dashiki", "Sarong", "Lehenga", "Gho", "Chapan", "Huipil", "Sombrero Vueltiao", "Shuka"
 ]
-
 clothing_descriptions = [
   "A traditional Japanese garment known for its elegant flowing silhouette and intricate patterns.",
   "A beautiful Korean attire characterized by vibrant colors and graceful lines, worn on special occasions.",
@@ -58,13 +57,16 @@ clothing_descriptions = [
   "A distinctive handwoven hat from Colombia, made from cane fiber and featuring intricate patterns.",
   "A brightly colored Maasai garment, often wrapped around the body and worn with beaded accessories."
 ]
+Clothing_Countries = ["Japan", "South Korea", "India", "China", "Germany", "Scotland", "Middle East", "Latin America", "Philippines", "Morocco", "Malaysia", "Vietnam", "West Africa", "Southeast Asia", "India", "Bhutan", "Central Asia", "Mexico", "Colombia", "Kenya"];
+
 
 clothing_items.each_with_index do |item, index|
   clothing = Clothing.new(
     name: item,
     price: rand(1000...10_000).round(-1),
     size: ["S", "M", "L"].sample,
-    description: clothing_descriptions[index]
+    description: clothing_descriptions[index],
+    country: Clothing_Countries[index]
   )
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
