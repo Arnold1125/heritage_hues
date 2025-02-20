@@ -1,0 +1,6 @@
+  <%= form_with url: path, method: :get, local: true, class: "mt-4 d-flex align-items-center" do |f| %>
+    <div class="form-group d-flex align-items-center">
+      <%= select_tag :status, options_for_select([['All', ''], ['Accepted', 'accepted'], ['Pending', 'pending'], ['Rejected', 'rejected']], params[:status]), class: 'form-select' %>
+      <%= f.submit "Filter", class: 'ms-2 btn btn-sm btn-primary rounded' %>
+    </div>
+  <% end %>
