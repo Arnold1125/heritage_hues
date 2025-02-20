@@ -8,7 +8,7 @@
         <% if clothing.photo.attached? %>
           <%= cl_image_tag clothing.photo.key, alt: "" %>
         <% else %>
-          <%= cl_image_tag clothing.photo.key, alt: "", size: "300x300" %>
+        <p>No image</p>
         <% end %>
 
         <h2><%= clothing.name %></h2>

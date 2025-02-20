@@ -10,7 +10,9 @@ class ClothingsController < ApplicationController
     @markers = @clothings.geocoded.map do |clothing|
       {
         lat: clothing.latitude,
-        lng: clothing.longitude
+        lng: clothing.longitude,
+        name: clothing.name,
+        address: clothing.address
       }
     end
   end
