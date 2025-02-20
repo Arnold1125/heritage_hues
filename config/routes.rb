@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index]
 
   namespace :owner do
-    resources :bookings, only: [:index]
+    resources :bookings, only: [:index, :update]
   end
 
   # Defines the root path route ("/")

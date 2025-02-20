@@ -1,0 +1,37 @@
+=> 
+[[32m#<Booking:0x000078f196490f10[0m
+  id: [34m[1m439[0m,
+  status: [31m[1m"[0m[31mpending[0m[31m[1m"[0m,
+  start_date: Tue, 18 Mar 2025,
+  end_date: Wed, 19 Mar 2025,
+  clothing_id: [34m[1m408[0m,
+  user_id: [34m[1m455[0m,
+  created_at: Wed, 19 Feb 2025 07:15:27.175945000 UTC +00:00,
+  updated_at: Wed, 19 Feb 2025 07:15:27.175945000 UTC +00:00[32m>[0m,
+ [32m#<Booking:0x000078f196490dd0[0m
+  id: [34m[1m444[0m,
+  status: [31m[1m"[0m[31maccepted[0m[31m[1m"[0m,
+  start_date: Thu, 20 Mar 2025,
+  end_date: Wed, 26 Mar 2025,
+  clothing_id: [34m[1m407[0m,
+  user_id: [34m[1m455[0m,
+  created_at: Wed, 19 Feb 2025 07:15:27.199140000 UTC +00:00,
+  updated_at: Wed, 19 Feb 2025 07:15:27.199140000 UTC +00:00[32m>[0m,
+ [32m#<Booking:0x000078f196490c90[0m
+  id: [34m[1m447[0m,
+  status: [31m[1m"[0m[31mpending[0m[31m[1m"[0m,
+  start_date: Fri, 14 Mar 2025,
+  end_date: Fri, 21 Mar 2025,
+  clothing_id: [34m[1m411[0m,
+  user_id: [34m[1m455[0m,
+  created_at: Wed, 19 Feb 2025 07:15:27.223752000 UTC +00:00,
+  updated_at: Wed, 19 Feb 2025 07:15:27.223752000 UTC +00:00[32m>[0m,
+ [32m#<Booking:0x000078f196490b50[0m
+  id: [34m[1m448[0m,
+  status: [31m[1m"[0m[31maccepted[0m[31m[1m"[0m,
+  start_date: Tue, 04 Mar 2025,
+  end_date: Thu, 13 Mar 2025,
+  clothing_id: [34m[1m421[0m,
+  user_id: [34m[1m455[0m,
+  created_at: Wed, 19 Feb 2025 07:15:27.227936000 UTC +00:00,
+  updated_at: Wed, 19 Feb 2025 07:15:27.227936000 UTC +00:00[32m>[0m]
