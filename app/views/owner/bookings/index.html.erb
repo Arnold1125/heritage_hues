@@ -5,17 +5,23 @@
 
   <%= render "shared/bookings_filter", path: owner_bookings_path %>
 
-  <h1 class="mt-4">My clothes</h1>
+  <h2>My clothes</h2>
+
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product">
       <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
       <div class="card-product-infos">
-        <h2><%= booking.clothing.name %></h2>
-
+        <h2 class="fs-2"><%= booking.clothing.name %></h2>
         <%= render "bookings/status", status: booking.status %>
-
+        <p class="fs-6"><i class="fa-solid fa-user"></i> <%= booking.user.email %></p>
         <% if booking.start_date && booking.end_date %>
-          <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
+          <p class="fs-6">
+            <i class="fa-solid fa-calendar-days"></i>
+            <%= booking.start_date.strftime("%b %d") %> -
+            <%= booking.end_date.strftime("%b %d") %>
+            </p>
+            <p class="fs-6 text-end">¥<%= booking.clothing.price.to_i %>/day</p>
+          <h2 class="text-end fs-4">¥<%= (booking.clothing.price * (booking.end_date - booking.start_date)).to_i %></h2>
         <% end %>
 
         <% if booking.status == "pending" %>
