@@ -18,7 +18,7 @@
               <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>          <div class="card-trip-infos">
               <div>
                 <h2><%= clothing.name %></h2>
-                <p>Short description here!</p>
+                <p><%= clothing.description %></p>
               </div>
               <h2 class="card-trip-pricing">¥<%= clothing.price %></h2>
             </div>

@@ -59,8 +59,13 @@ clothing_descriptions = [
   "A brightly colored Maasai garment, often wrapped around the body and worn with beaded accessories."
 ]
 
-clothing_items.each do |item|
-  clothing = Clothing.new(name: item, price: rand(1000...10_000).round(-1), size: ["S", "M", "L"].sample)
+clothing_items.each_with_index do |item, index|
+  clothing = Clothing.new(
+    name: item,
+    price: rand(1000...10_000).round(-1),
+    size: ["S", "M", "L"].sample,
+    description: clothing_descriptions[index]
+  )
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
   if File.exist?(image_path)
@@ -84,8 +89,3 @@ puts "Creating 5 bookings..."
 end
 
 puts "#{Booking.all.count} bookings created"
-
-Clothing.all.each_with_index do |clothing, index|
-  clothing.description = clothing_descriptions[index]
-  clothing.save!
-end
