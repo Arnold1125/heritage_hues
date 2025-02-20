@@ -3,30 +3,25 @@
     <i class="mt-4 fa-solid fa-chevron-left text-black"></i>
   <% end %>
 
-  <%= form_with url: bookings_path, method: :get, local: true, class: "mt-4 d-flex align-items-center" do |f| %>
-    <div class="form-group d-flex align-items-center">
-      <%= select_tag :status, options_for_select([['All Bookings', ''], ['Accepted', 'accepted'], ['Pending', 'pending'], ['Rejected', 'rejected']], params[:status]), class: 'form-select' %>
-      <%= f.submit "Filter", class: 'ms-2 btn btn-sm btn-primary rounded' %>
+  <%= render "shared/bookings_filter", path: bookings_path %>
+
+  <h2>My bookings</h2>
+  <% @bookings.each do |booking| %>
+    <div class="mt-4 card-product">
+      <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
+      <div class="card-product-infos">
+        <h2><%= booking.clothing.name %></h2>
+
+        <% if booking.status == "accepted" %>
+          <div class="badge rounded-pill bg-success"><%= booking.status %></div>
+        <% elsif booking.status == "pending" %>
+          <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
+        <% else %>
+          <div class="badge rounded-pill bg-danger"><%= booking.status %></div>
+        <% end %>
+
+        <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
+      </div>
     </div>
   <% end %>
-
-<h2>My bookings</h2>
-<% @bookings.each do |booking| %>
-  <div class="mt-4 card-product">
-    <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
-    <div class="card-product-infos">
-      <h2><%= booking.clothing.name %></h2>
-
-      <% if booking.status == "accepted" %>
-        <div class="badge rounded-pill bg-success"><%= booking.status %></div>
-      <% elsif booking.status == "pending" %>
-        <div class="badge rounded-pill bg-warning"><%= booking.status %></div>
-      <% else %>
-        <div class="badge rounded-pill bg-danger"><%= booking.status %></div>
-      <% end %>
-
-      <p><%= booking.start_date.strftime("%A, %b %d") %> to <%= booking.end_date.strftime("%A, %b %d") %></p>
-    </div>
-  </div>
-<% end %>
 </div>
