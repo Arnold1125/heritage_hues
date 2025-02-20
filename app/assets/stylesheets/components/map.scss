@@ -1,0 +1,35 @@
+.page-container {
+  display: flex;
+  flex-direction: row; /* Keeps the map on the right */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start; /* Aligns content at the top */
+  height: 100vh; /* Make it full height */
+}
+
+/* Left side: Clothing list (2/3 of the page) */
+.clothing-list {
+  flex: 2;
+  overflow-y: auto; /* Enables scrolling */
+  max-height: 100vh;
+}
+
+/* Right side: Map (1/3 of the page) */
+#map-container {
+  flex: 1;
+  height: 100vh; /* Full height */
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensures the map fills the container */
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
