@@ -26,6 +26,11 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+$position-values: (
+  0: 0,
+  10: 10%,
+  100: 100%
+);
 $h6-font-size: 0.8rem;
 $navbar-toggler-font-size: 0.8rem;
 $navbar-light-toggler-border-color: white;
