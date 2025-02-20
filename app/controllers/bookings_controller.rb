@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
     @clothing = Clothing.find(params[:clothing_id])
     @booking.clothing = @clothing
     @booking.user = current_user
+
     if @booking.save
       redirect_to bookings_path
     else
