@@ -16,6 +16,10 @@
       </div>
 
       <div class="form-group">
+        <%= f.input :address %>
+      </div>
+
+      <div class="form-group">
         <%= f.input :photo, as: :file, label: "Upload an Image" %>
       </div>
 
@@ -26,7 +30,7 @@
         { class: "form-control", data: { controller: "tom-select", tom_select_options_value: "{}" } } %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group pt-3">
         <%= f.input :color %>
       </div>
 
@@ -43,7 +47,3 @@
       </div>
     <% end %>
 </div>
-
-<%#= f.input :country, as: :select, collection: ISO3166::Country.all.map { |c| [c.name, c.alpha2] }, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
-<%#= f.country_select :country, { multiple: true }, { class: "form-control", data: { controller: "tom-select" } } %>
-<%#= f.country_select :country, { multiple: true }, { class: "form-control", data: { controller: "tom-select" } }%>
