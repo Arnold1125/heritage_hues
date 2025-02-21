@@ -1,10 +1,10 @@
 <div class="mt-2 d-flex gap-1 align-items-center">
   <% if status == "pending" %>
-      <span class="status-circle rounded-circle bg-warning"></span>
+    <span class="status-circle bg-warning" role="status"></span>
   <% elsif status == "accepted" %>
-      <span class="status-circle rounded-circle bg-success"></span>
+    <span class="status-circle bg-success" role="status"></span>
   <% else %>
-      <span class="status-circle rounded-circle bg-danger"></span>
+    <span class="status-circle bg-danger" role="status"></span>
   <% end %>
   <p class="fs-6 m-0"><%= status %></p>
 </div>
