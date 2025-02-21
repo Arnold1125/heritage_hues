@@ -17,7 +17,7 @@ class ClothingsController < ApplicationController
     end
 
     if params[:q].present?
-      @clothings = Clothing.search_by_name_and_description_and_country(params[:q])
+      @clothings = Clothing.search_by_name_and_country(params[:q])
     else
       @clothings = Clothing.all
 

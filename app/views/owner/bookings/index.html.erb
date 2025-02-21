@@ -5,74 +5,73 @@
 
   <%= render "shared/bookings_filter", path: owner_bookings_path %>
 
-  <h1 class="mt-4">My requests</h1>
+  <ul class="nav nav-tabs mt-4" role="tablist" id="myTab">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link active"
+              data-action="click->tabs#switchTab"
+              data-tabs-target="tabButton"
+              id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings-tab-pane" role="tab" aria-controls="bookings-tab-pane" aria-selected="true">
+        My Requests
+      </span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link"
+              data-action="click->tabs#switchTab"
+              data-tabs-target="tabButton"
+              id="clothing-tab" data-bs-toggle="tab" data-bs-target="#clothing-tab-pane" role="tab" aria-controls="clothing-tab-pane" aria-selected="true">
+        My Clothings
+      </span>
+    </li>
+  </ul>
 
-  <% @bookings.each do |booking| %>
-    <div class="mt-4 card-product position-relative">
-      <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
-      <div class="card-product-infos">
-        <h2 class="fs-2"><%= booking.clothing.name %></h2>
-        <%= render "bookings/status", status: booking.status %>
-        <p class="fs-6"><i class="fa-solid fa-user"></i> <%= booking.user.email %></p>
-        <% if booking.start_date && booking.end_date %>
-          <p class="fs-6">
-            <i class="fa-solid fa-calendar-days"></i>
-            <%= booking.start_date.strftime("%b %d") %> -
-            <%= booking.end_date.strftime("%b %d") %>
-            </p>
-          <p class="fs-6 text-end">¥<%= booking.clothing.price.to_i %>/day</p>
-          <h2 class="text-end fs-4">¥<%= (booking.clothing.price * (booking.end_date - booking.start_date)).to_i %></h2>
-        <% end %>
 
-        <% if booking.status == "pending" %>
-          <div class="d-flex position-absolute bottom-10">
-            <%= form_with(model: booking, url: owner_booking_path(booking), method: :patch, local: true) do |f| %>
-              <div class="mt-2">
-                <%= f.hidden_field :status, value: 'accepted' %>
-                <%= f.submit "Accept", class: 'btn btn-sm btn-success me-2' %>
-              </div>
-            <% end %>
-            <%= form_with(model: booking, url: owner_booking_path(booking), method: :patch, local: true) do |f| %>
-              <div class="mt-2">
-                <%= f.hidden_field :status, value: 'rejected' %>
-                <%= f.submit "Reject", class: 'btn btn-danger btn-sm' %>
-              </div>
+  <div class="tab-content-container mt-3" id="myTabContent">
+
+    <div class="tab-pane fade show active"
+         data-tabs-target="tabContent"
+         id="bookings-tab-pane" role="tabpanel" aria-labelledby="bookings-tab" tabindex="0">
+      <h1 class="mt-4">My Requests</h1>
+      <% @bookings.each do |booking| %>
+        <div class="mt-4 card-product position-relative">
+          <% if booking.clothing.photo.attached? %>
+            <%= cl_image_tag booking.clothing.photo.key, alt: "" %>
+          <% end %>
+          <div class="card-product-infos">
+            <h2 class="fs-2"><%= booking.clothing.name %></h2>
+            <%= render "bookings/status", status: booking.status %>
+            <p class="fs-6"><i class="fa-solid fa-user"></i> <%= booking.user.email %></p>
+            <% if booking.start_date && booking.end_date %>
+              <p class="fs-6">
+                <i class="fa-solid fa-calendar-days"></i>
+                <%= booking.start_date.strftime("%b %d") %> - <%= booking.end_date.strftime("%b %d") %>
+              </p>
+              <p class="fs-6 text-end">¥<%= booking.clothing.price.to_i %>/day</p>
+              <h2 class="text-end fs-4">¥<%= (booking.clothing.price * (booking.end_date - booking.start_date)).to_i %></h2>
             <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 
 
-  <h1 class="mt-4">My Clothings</h1>
-
-<% @clothings.each do |clothing| %>
-  <div class="mt-4 card-product">
-    <%= cl_image_tag clothing.photo.key, alt: "" %>
-
-    <div class="card-product-infos">
-      <h2 class="fs-2"><%= clothing.name %></h2>
-      <p class="fs-6 text-end">¥<%= clothing.price.to_i %>/day</p>
-      <p><%= clothing.color %></p>
-      <p><%= clothing.size %></p>
-      <p><%= clothing.country %></p>
-
-
-      <div class="d-flex justify-content-end gap-3 mt-2">
-
-
-        <%= link_to edit_clothing_path(clothing), class: "text-primary" do %>
-          <i class="fas fa-edit"></i>
-        <% end %>
-
-        <%= button_to clothing_path(clothing), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger border-0 bg-transparent" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
+    <div class="tab-pane fade"
+         data-tabs-target="tabContent"
+         id="clothing-tab-pane" role="tabpanel" aria-labelledby="clothing-tab" tabindex="0">
+      <h1 class="mt-4">My Clothings</h1>
+      <% @clothings.each do |clothing| %>
+        <div class="mt-4 card-product">
+            <% if clothing.photo.attached? %>
+              <%= cl_image_tag clothing.photo.key, alt: "" %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2 class="fs-2"><%= clothing.name %></h2>
+              <p class="fs-6 text-end">¥<%= clothing.price.to_i %>/day</p>
+              <p><%= clothing.color %></p>
+              <p><%= clothing.size %></p>
+              <p><%= clothing.country %></p>
+            </div>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
-
-
 </div>

@@ -37,3 +37,56 @@
   height: 12px;
   padding: 0;
 }
+
+/* ====== Custom Styles for Tabs ====== */
+.nav-tabs {
+  border-bottom: 2px solid #ddd;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+  border: none;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ====== Smooth Transition for Tab Switching ====== */
+.tab-pane {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tab-pane.show {
+  display: block;
+  opacity: 1;
+}
+
+.nav-tabs .nav-link:hover {
+  background: #0056b3;
+  color: white;
+  cursor: text;
+}
+
+.nav-tabs .nav-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+  border: none;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer !important;
+}
+
+.nav-tabs .nav-link:hover {
+  background: #0056b3;
+  color: white;
+  cursor: pointer !important;
+}
