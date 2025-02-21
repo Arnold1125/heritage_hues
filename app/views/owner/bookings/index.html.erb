@@ -5,7 +5,7 @@
 
   <%= render "shared/bookings_filter", path: owner_bookings_path %>
 
-  <h1 class="mt-4">My requests</h1>
+  <h1 class="mt-4">Orders</h1>
 
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product position-relative">
@@ -44,7 +44,6 @@
     </div>
   <% end %>
 
-
   <h1 class="mt-4">My Clothings</h1>
 
 <% @clothings.each do |clothing| %>
@@ -71,6 +70,5 @@
     </div>
   </div>
 <% end %>
-
 
 </div>

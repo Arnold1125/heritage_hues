@@ -1,11 +1,13 @@
 <div class="banner-main" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "banner.jpg" %>);">
-  <div class="container d-flex flex-column justify-content-center align-items-center">
-    <h1>Color your life with heritage</h1>
+  <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <h1>Heritage in Every Thread – Experience Culture, One Outfit at a Time</h1>
+<p class="banner-subtitle"><em>Rent, Wear, and Embrace the Stories Woven into Every Garment.</em></p>
   </div>
 </div>
 
+
 <div class="container">
-  <h1 class="mt-4">All clothings</h1>
+  <h1 class="mt-4">Listings</h1>
   <div class="cards">
     <% @clothings.each do |clothing| %>
           <div class="card-trip">
@@ -25,8 +27,9 @@
                 <p><%= clothing.description %></p>
                 <p><%= clothing.country %></p>
               </div>
-              <h2 class="card-trip-pricing">¥<%= clothing.price.round(-1) %>/day</h2>
-            </div>
+              <h2 class="card-trip-pricing">
+              ¥<%= clothing.price.round(-1) %><span class="per-day">/ day</span>
+             </h2></div>
           </div>
       <% end %>
       </%= link_to %>
