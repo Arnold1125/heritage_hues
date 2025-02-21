@@ -4,20 +4,20 @@
   <!-- Left Side: Clothing List (2/3 of the page) -->
   <div class="clothing-list">
     <% @clothings.each do |clothing| %>
-      <div class="clothing-item">
-        <% if clothing.photo.attached? %>
-          <%= cl_image_tag clothing.photo.key, alt: "" %>
-        <% else %>
-        <p>No image</p>
-        <% end %>
+      <%= link_to clothing_path(clothing), class: "card-trip-link" do %>
+        <div class="clothing-item">
+          <% if clothing.photo.attached? %>
+            <%= cl_image_tag clothing.photo.key, alt: "" %>
+          <% else %>
+          <p>No image</p>
+          <% end %>
 
-        <h2><%= clothing.name %></h2>
-        <h2><%= clothing.country %></h2>
-        <p>Size: <%= clothing.size %></p>
-        <p>Price: <%= number_to_currency(clothing.price, {unit: "¥", precision: 0}) %> per day</p>
-
-        <%= link_to "View Details", clothing_path(clothing), class: "btn btn-primary" %>
-      </div>
+          <h2><%= clothing.name %></h2>
+          <h2><%= clothing.country %></h2>
+          <p>Size: <%= clothing.size %></p>
+          <p>Price: <%= number_to_currency(clothing.price, {unit: "¥", precision: 0}) %> per day</p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
