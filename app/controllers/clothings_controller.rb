@@ -66,7 +66,6 @@ class ClothingsController < ApplicationController
     redirect_to owner_bookings_path(@clothing)
   end
 
-
   private
 
   def clothing_params
