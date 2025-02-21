@@ -55,9 +55,8 @@ clothing_descriptions = [
 ]
 
 clothing_address = [
-"1 Chome-2-3 Asakusa, Tokyo, Japan",
-"5 Chome-3-6 Shibuya, Tokyo, Japan",
-"3 Chome-28-14 Shinjuku, Tokyo, Japan",
+"日本, 〒150-0002 東京都渋谷区渋谷５丁目３番６号",
+"日本, 〒160-0022 東京都新宿区新宿３丁目２８番１４号",
 "日本, 〒116-0002 東京都荒川区荒川６丁目１３番５号",
 "日本, 〒107-0052 東京都港区赤坂７丁目６番５６号",
 "日本, 〒169-0071 東京都新宿区戸塚町１丁目１０４番地",
@@ -71,10 +70,10 @@ clothing_address = [
 "日本, 〒110-0016 東京都台東区台東３丁目２１番４号",
 "日本, 〒154-0021 東京都世田谷区豪徳寺２丁目１９番１４号",
 "日本, 〒150-0013 東京都渋谷区恵比寿１丁目１６番２８号",
-"2 Chome-11-3 Meguro, Meguro City, Tokyo 153-0063, Japan",
-"4 Chome-15-8 Ueno, Taito City, Tokyo 110-0005, Japan",
-"6 Chome-7-19 Roppongi, Minato City, Tokyo 106-0032, Japan",
-"3 Chome-12-5 Ginza, Chuo City, Tokyo 104-0061, Japan"
+"日本, 〒153-0063 東京都目黒区目黒２丁目１１番３号",
+"日本, 〒110-0005 東京都台東区上野４丁目１５番８号",
+"日本, 〒106-0032 東京都港区六本木６丁目７番１９号",
+"日本, 〒104-0061 東京都中央区銀座３丁目１２番５号"
 ]
 
 store_name = [
@@ -130,7 +129,8 @@ clothing_items.each_with_index do |item, index|
     size: ["S", "M", "L"].sample,
     description: clothing_descriptions[index],
     address: clothing_address[index],
-    country: clothing_countries[index]
+    country: clothing_countries[index],
+    store: store_name[index]
   )
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
