@@ -5,7 +5,7 @@
 
   <%= render "shared/bookings_filter", path: owner_bookings_path %>
 
-  <h1 class="mt-4">My requests</h1>
+  <h1 class="mt-4">Orders</h1>
 
   <% @bookings.each do |booking| %>
     <div class="mt-4 card-product position-relative">
@@ -43,36 +43,5 @@
       </div>
     </div>
   <% end %>
-
-
-  <h1 class="mt-4">My Clothings</h1>
-
-<% @clothings.each do |clothing| %>
-  <div class="mt-4 card-product">
-    <%= cl_image_tag clothing.photo.key, alt: "" %>
-
-    <div class="card-product-infos">
-      <h2 class="fs-2"><%= clothing.name %></h2>
-      <p class="fs-6 text-end">¥<%= clothing.price.to_i %>/day</p>
-      <p><%= clothing.color %></p>
-      <p><%= clothing.size %></p>
-      <p><%= clothing.country %></p>
-
-
-      <div class="d-flex justify-content-end gap-3 mt-2">
-
-
-        <%= link_to edit_clothing_path(clothing), class: "text-primary" do %>
-          <i class="fas fa-edit"></i>
-        <% end %>
-
-        <%= button_to clothing_path(clothing), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger border-0 bg-transparent" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
 
 </div>
