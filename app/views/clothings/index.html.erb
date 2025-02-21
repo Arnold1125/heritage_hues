@@ -1,4 +1,7 @@
-<h1>Traditional Clothes for Rent</h1>
+
+<% if @user.present? %>
+  <h1>Clothing from <%= @user.email %></h1>
+<% end %>
 
 <div class="page-container">
   <!-- Left Side: Clothing List (2/3 of the page) -->

@@ -5,12 +5,13 @@ class ClothingsController < ApplicationController
   end
 
   def index
-
-    if params[:q].present?
+    if params[:user].present?
+      @user = User.find(params[:user])
+      @clothings = Clothing.where(user: @user)
+    elsif params[:q].present?
       @clothings = Clothing.search_by_name_and_description_and_country(params[:q])
     else
       @clothings = Clothing.all
-
     end
     @markers = @clothings.geocoded.map do |clothing|
       {

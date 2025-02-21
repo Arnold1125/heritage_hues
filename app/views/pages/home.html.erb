@@ -8,19 +8,26 @@
   <h1 class="mt-4">All clothings</h1>
   <div class="cards">
     <% @clothings.each do |clothing| %>
-      <%= link_to clothing_path(clothing), class: "card-trip-link" do %>
-        <% if clothing.photo.attached? %>
           <div class="card-trip">
-              <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>          <div class="card-trip-infos">
+            <%= link_to clothing_path(clothing), class: "card-trip-link" do %>
+            <% if clothing.photo.attached? %>
+             <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>
+            <% end %>
+            <div class="card-trip-infos">
               <div>
                 <h2><%= clothing.name %></h2>
+                <%= link_to clothings_path(user: clothing.user.id) do %>
+                  <p class="fs-6">
+                    <i class="fa-solid fa-user"></i>
+                    <%= clothing.user.email %>
+                  </p>
+                <% end %>
                 <p><%= clothing.description %></p>
                 <p><%= clothing.country %></p>
               </div>
-              <h2 class="card-trip-pricing">¥<%= clothing.price %></h2>
+              <h2 class="card-trip-pricing">¥<%= clothing.price.round(-1) %>/day</h2>
             </div>
           </div>
-        <% end %>
       <% end %>
       </%= link_to %>
     <% end %>
