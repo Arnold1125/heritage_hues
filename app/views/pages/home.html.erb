@@ -14,6 +14,12 @@
               <%= cl_image_tag clothing.photo.key, alt: "Image of #{clothing.name}" %>          <div class="card-trip-infos">
               <div>
                 <h2><%= clothing.name %></h2>
+                <%= link_to clothings_path(user: clothing.user.id) do %>
+                  <p class="fs-6">
+                    <i class="fa-solid fa-user"></i>
+                    <%= clothing.user.email %>
+                  </p>
+                <% end %>
                 <p><%= clothing.description %></p>
                 <p><%= clothing.country %></p>
               </div>
