@@ -20,6 +20,12 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :country, "Select Country", class: "d-block" %>
+        <%= f.country_select :country, { multiple: true},
+        { class: "form-control", data: { controller: "tom-select" } } %>
+      </div>
+
+      <div class="form-group">
         <%= f.input :color %>
       </div>
 
@@ -29,8 +35,14 @@
       </div>
 
 
+
+
       <div class="form-group">
         <%= f.submit 'Make listing', class: 'btn btn-primary' %>
       </div>
     <% end %>
 </div>
+
+<%#= f.input :country, as: :select, collection: ISO3166::Country.all.map { |c| [c.name, c.alpha2] }, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}} %>
+<%#= f.country_select :country, { multiple: true }, { class: "form-control", data: { controller: "tom-select" } } %>
+<%#= f.country_select :country, { multiple: true }, { class: "form-control", data: { controller: "tom-select" } }%>
