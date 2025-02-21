@@ -25,7 +25,7 @@
                 <p><%= clothing.description %></p>
                 <p><%= clothing.country %></p>
               </div>
-              <h2 class="card-trip-pricing">¥<%= clothing.price %></h2>
+              <h2 class="card-trip-pricing">¥<%= clothing.price.round(-1) %>/day</h2>
             </div>
           </div>
       <% end %>
