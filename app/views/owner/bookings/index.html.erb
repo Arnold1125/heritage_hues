@@ -48,7 +48,6 @@
   <h1 class="mt-4">My Clothings</h1>
 
 <% @clothings.each do |clothing| %>
-  <div class="mt-4 card-product">
     <%= cl_image_tag clothing.photo.key, alt: "" %>
 
     <div class="card-product-infos">
