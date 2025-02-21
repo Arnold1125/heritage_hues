@@ -18,7 +18,8 @@ class ClothingsController < ApplicationController
         lat: clothing.latitude,
         lng: clothing.longitude,
         name: clothing.name,
-        address: clothing.address
+        address: clothing.address,
+        path: "clothings/#{clothing.id}"
       }
     end
   end
