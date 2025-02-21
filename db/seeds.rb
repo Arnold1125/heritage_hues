@@ -130,7 +130,6 @@ clothing_items.each_with_index do |item, index|
     description: clothing_descriptions[index],
     address: clothing_address[index],
     country: clothing_countries[index],
-    store: store_name[index]
   )
   clothing.user = User.all.sample
   image_path = Rails.root.join("app/assets/images/#{item.downcase.gsub(' ', '_')}.png")
